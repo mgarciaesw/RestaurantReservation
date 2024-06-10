@@ -6,9 +6,9 @@ namespace RestaurantManagement.API.RouteHandlerExtensions
     {
         public static void AddMinimalAPIRouteHandlerMappings(this WebApplication app)
         {
-            app.MapGet("/restaurant", (RestaurantService service, int customerId) =>
+            app.MapGet("/restaurant/{restaurantId}", (RestaurantService service, int restaurantId) =>
                 {
-                    return service.GetRestaurantByIdAsync(customerId);
+                    return service.GetRestaurantByIdAsync(restaurantId);
                 })
                 .WithName("GetRestaurantById")
                 .WithOpenApi();
@@ -20,9 +20,9 @@ namespace RestaurantManagement.API.RouteHandlerExtensions
                 .WithName("CreateRestaurant")
                 .WithOpenApi();
 
-            app.MapDelete("/restaurant", (RestaurantService service, int customerId) =>
+            app.MapDelete("/restaurant/{restaurantId}", (RestaurantService service, int restaurantId) =>
                 {
-                    return service.DeleteRestaurantAsync(customerId);
+                    return service.DeleteRestaurantAsync(restaurantId);
                 })
                 .WithName("DeleteRestaurant")
                 .WithOpenApi();
