@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "reservationmanagement.api": "StartDebugging",
+        "restaurantmanagement.api": "StartDebugging",
+        "usermanagement.api": "StartDebugging"
+      }
+    }
+  }
+}

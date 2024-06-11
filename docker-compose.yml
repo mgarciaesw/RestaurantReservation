@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  reservationmanagement.api:
+    image: ${DOCKER_REGISTRY-}reservationmanagementapi
+    build:
+      context: .
+      dockerfile: ReservationManagement.API/Dockerfile
+    
+  restaurantmanagement.api:
+    image: ${DOCKER_REGISTRY-}restaurantmanagementapi
+    build:
+      context: .
+      dockerfile: RestaurantManagement.API/Dockerfile
+    
+  usermanagement.api:
+    image: ${DOCKER_REGISTRY-}usermanagementapi
+    build:
+      context: .
+      dockerfile: UserManagement.API/Dockerfile

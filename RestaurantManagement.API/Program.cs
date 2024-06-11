@@ -24,7 +24,7 @@ if (app.Environment.IsDevelopment())
     app.SeedData(builder.Services);
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.AddMinimalAPIRouteHandlerMappings();
 
