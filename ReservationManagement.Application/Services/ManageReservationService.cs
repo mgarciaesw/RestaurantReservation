@@ -16,13 +16,11 @@ namespace ReservationManagement.Application.Services
         public async Task<int> CreateReservationAsync(CreateReservationRequest request)
         {
             // Create a new customer entity
-            var reservation = new Reservation
-            {
-                Date = request.Date,
-                NumberOfPeople = request.NumberOfPeople,
-                CustomerId = request.CustomerId,
-                RestaurantId = request.RestaurantId
-            };
+            var reservation = Reservation.Create(
+                request.Date,
+                request.NumberOfPeople,
+                request.CustomerId,
+                request.RestaurantId);
 
             // Add the customer to the repository
             return await _repository.AddAndSaveAsync(reservation);
