@@ -6,15 +6,41 @@ services:
     build:
       context: .
       dockerfile: ReservationManagement.API/Dockerfile
+    networks: 
+        - restaurants-network
     
   restaurantmanagement.api:
     image: ${DOCKER_REGISTRY-}restaurantmanagementapi
     build:
       context: .
       dockerfile: RestaurantManagement.API/Dockerfile
+    networks: 
+        - restaurants-network
     
   usermanagement.api:
     image: ${DOCKER_REGISTRY-}usermanagementapi
     build:
       context: .
       dockerfile: UserManagement.API/Dockerfile
+    networks: 
+        - restaurants-network
+
+  database:
+      image: postgres:16.2-alpine
+      container_name: eshop.database
+      restart: always
+      networks: 
+          - restaurants-network
+
+  adminer:
+      image: adminer
+      container_name: eshop.adminer
+      restart: always
+      depends_on:
+          - database
+      networks: 
+          - restaurants-network
+
+networks:
+    restaurants-network:
+        driver: bridge

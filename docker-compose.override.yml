@@ -36,3 +36,16 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  database:
+    ports:
+      - 5432:5432
+    volumes:
+      - ./.docker/postgresql/data:/var/lib/postgresql/data
+    environment:
+      - "POSTGRES_USER=${DATABASE_USER}"
+      - "POSTGRES_PASSWORD=${DATABASE_PASSWORD}"
+
+  adminer:
+    ports:
+      - 8888:8080
