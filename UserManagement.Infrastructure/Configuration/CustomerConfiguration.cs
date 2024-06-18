@@ -1,11 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UserManagement.Domain.Entities.Customers;
 
 namespace UserManagement.Infrastructure.Configuration
@@ -31,6 +25,7 @@ namespace UserManagement.Infrastructure.Configuration
                 .IsRequired();
 
             builder.Property(c => c.LastRestaurantReserved)
+                .IsRequired(false)
                 .HasMaxLength(100);
         }
     }

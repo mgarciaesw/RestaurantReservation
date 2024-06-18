@@ -13,6 +13,6 @@ namespace UserManagement.Domain.Entities.Customers
         public string LastName { get; set; }
         public string Email { get; set; }
         public int TotalNumberOfReservations { get; set; } = 0;
-        public string LastRestaurantReserved { get; set; }
+        public string? LastRestaurantReserved { get; set; }
     }
 }
