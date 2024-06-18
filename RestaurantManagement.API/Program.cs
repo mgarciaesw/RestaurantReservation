@@ -1,7 +1,7 @@
 using RestaurantManagement.API.RouteHandlerExtensions;
 using RestaurantManagement.Application;
 using RestaurantManagement.Infrastructure;
-using RestaurantManagement.Infrastructure.DataSeeds;
+using RestaurantManagement.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplication();
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddSqlServerInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
@@ -21,10 +21,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 
-    app.SeedData(builder.Services);
+    app.ApplyMigrations();
 }
 
-// app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.AddMinimalAPIRouteHandlerMappings();
 

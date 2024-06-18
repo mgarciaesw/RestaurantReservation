@@ -39,11 +39,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReservationManagement.Infra
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8B3A5C96-B54F-4E3A-9358-FCADC6CCFECE}"
 EndProject
+<<<<<<< Updated upstream
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MenuManagement", "MenuManagement", "{64FB6CD4-3659-4322-8F3F-95416AC8B276}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuManagement.Domain", "MenuManagement.Domain\MenuManagement.Domain.csproj", "{14EDE17D-AEE4-47C7-BEC9-6417342CFD78}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuManagement.Application", "MenuManagement.Application\MenuManagement.Application.csproj", "{62D16946-DEE1-4F62-A242-8E4099412D55}"
+=======
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A838D58A-EE65-45BD-A045-6E8653C9C852}"
+	ProjectSection(SolutionItems) = preProject
+		.env = .env
+	EndProjectSection
+>>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

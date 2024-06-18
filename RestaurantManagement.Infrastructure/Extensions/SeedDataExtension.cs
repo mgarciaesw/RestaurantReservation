@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using RestaurantManagement.Domain.Entities.Restaurants;
 using RestaurantManagement.Domain.Repositories;
 
-namespace RestaurantManagement.Infrastructure.DataSeeds
+namespace RestaurantManagement.Infrastructure.Extensions
 {
     public static class SeedDataExtension
     {

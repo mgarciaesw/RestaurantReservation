@@ -9,7 +9,7 @@ using RestaurantManagement.Infrastructure.Configuration;
 
 namespace RestaurantManagement.Infrastructure
 {
-    internal class ApplicationDBContext: DbContext
+    public class ApplicationDBContext: DbContext
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {

@@ -69,6 +69,12 @@ services:
           - "POSTGRES_USER=${DATABASE_USER}"
           - "POSTGRES_PASSWORD=${DATABASE_PASSWORD}"
 
+  sql-server:
+      image: mcr.microsoft.com/mssql/server
+      container_name: sql-server-container
+      networks:
+          - restaurants-network
+
   adminer:
       image: adminer
       container_name: eshop.adminer
