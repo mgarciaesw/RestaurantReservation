@@ -17,7 +17,7 @@ namespace ReservationManagement.Application.Services
         {
             // Create a new customer entity
             var reservation = Reservation.Create(
-                request.Date,
+                request.Date.ToString(),
                 request.NumberOfPeople,
                 request.CustomerId,
                 request.RestaurantId);
