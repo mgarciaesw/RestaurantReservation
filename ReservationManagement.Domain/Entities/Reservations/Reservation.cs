@@ -5,7 +5,7 @@ namespace ReservationManagement.Domain.Entities.Reservations
     public class Reservation : Entity
     {
         private Reservation(
-            DateTime date,
+            string date,
             int numberOfPeople,
             int customerId,
             int restaurantId)
@@ -16,13 +16,13 @@ namespace ReservationManagement.Domain.Entities.Reservations
             RestaurantId = restaurantId;
         }
 
-        public DateTime Date { get; private set; }
+        public string Date { get; private set; }
         public int NumberOfPeople { get; private set; }
         public int CustomerId { get; private set; }
         public int RestaurantId { get; private set; }
 
         public static Reservation Create(
-            DateTime date,
+            string date,
             int numberOfPeople,
             int customerId,
             int restaurantId
