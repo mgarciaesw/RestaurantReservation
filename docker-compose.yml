@@ -4,10 +4,20 @@ services:
   reservationmanagement.api:
     image: ${DOCKER_REGISTRY-}reservationmanagementapi
     build:
-      context: .
-      dockerfile: ReservationManagement.API/Dockerfile
+        context: .
+        dockerfile: ReservationManagement.API/Dockerfile
     networks: 
         - restaurants-network
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - ASPNETCORE_HTTP_PORTS=8280
+        - ASPNETCORE_HTTPS_PORTS=8281
+    ports:
+        - 8280:8280
+        - 8281:8281
+    volumes:
+        - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+        - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
     
   restaurantmanagement.api:
     image: ${DOCKER_REGISTRY-}restaurantmanagementapi
@@ -16,6 +26,16 @@ services:
       dockerfile: RestaurantManagement.API/Dockerfile
     networks: 
         - restaurants-network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8180
+      - ASPNETCORE_HTTPS_PORTS=8181
+    ports:
+      - 8180:8180
+      - 8181:8181
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
     
   usermanagement.api:
     image: ${DOCKER_REGISTRY-}usermanagementapi
@@ -24,6 +44,16 @@ services:
       dockerfile: UserManagement.API/Dockerfile
     networks: 
         - restaurants-network
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - ASPNETCORE_HTTP_PORTS=8380
+        - ASPNETCORE_HTTPS_PORTS=8381
+    ports:
+        - 8380:8380
+        - 8381:8381
+    volumes:
+        - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+        - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
   database:
       image: postgres:16.2-alpine
@@ -31,6 +61,13 @@ services:
       restart: always
       networks: 
           - restaurants-network
+      ports:
+          - 5432:5432
+      volumes:
+          - ./.docker/postgresql/data:/var/lib/postgresql/data
+      environment:
+          - "POSTGRES_USER=${DATABASE_USER}"
+          - "POSTGRES_PASSWORD=${DATABASE_PASSWORD}"
 
   adminer:
       image: adminer
@@ -40,6 +77,8 @@ services:
           - database
       networks: 
           - restaurants-network
+      ports:
+          - 8888:8080
 
 networks:
     restaurants-network:
